@@ -6,13 +6,13 @@
 title: Hexo
 subtitle:
 description:
-author: John Doe
-language:
-timezone:
+author: saystone
+language: en
+timezone: Asia/Seoul
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://yoursite.com
+url: https://saystone.github.io/
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -64,7 +64,20 @@ pagination_dir: page
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
 theme: even
-search: true
+theme_config:
+  theme:
+    color: Default
+    toc: true
+    search: true
+    navbar: true
+    fancybox: true
+  copyright:
+    enable: false
+  social:
+    email: saystone@email.com
+    twitter: https://www.twitter.com/saystone
+    facebook: https://www.facebook.com/saystone
+    github: https://www.github.com/saystone
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
