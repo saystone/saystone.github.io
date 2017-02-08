@@ -855,6 +855,13 @@ hexo-generator-index@^0.2.0:
     hexo-pagination "0.0.2"
     object-assign "^4.0.1"
 
+hexo-generator-search:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/hexo-generator-search/-/hexo-generator-search-1.0.3.tgz#6e992d11bd58dcf13755e350bc9bd30916731d09"
+  dependencies:
+    ejs "^1.0.0"
+    utils-merge "^1.0.0"
+
 hexo-generator-tag@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/hexo-generator-tag/-/hexo-generator-tag-0.2.0.tgz#c5715846bb41e57d9c20c1d66d7db21a1abf7a62"
