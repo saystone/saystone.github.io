@@ -78,8 +78,14 @@ theme_config:
     twitter: https://www.twitter.com/saystone
     facebook: https://www.facebook.com/saystone
     github: https://www.github.com/saystone
-google_analytics: UA-8545359-2
-disqus_shortname: saystone
+  reward:
+    enable: false
+  google_analytics: UA-8545359-2
+  disqus_shortname: saystone
+  since: 2017
+  fancybox: false
+  toc: false
+
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
