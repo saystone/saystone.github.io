@@ -2,7 +2,7 @@
 title: 정적 블로그 Hexo 설치하기
 date: 2017-02-13 17:31:28
 tags: 
-  - static blog
+  - static-blog
   - hexo
 ---
 - 이 글에서 알 수 있는 것: Hexo를 선택하게 된 계기, Hexo의 기본 설치 방법과 간단한 사용 방법. 
