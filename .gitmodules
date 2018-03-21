@@ -1,3 +1,6 @@
 [submodule "themes/even"]
 	path = themes/even
 	url = https://github.com/ahonn/hexo-theme-even
+[submodule "themes/maupassant"]
+	path = themes/maupassant
+	url = https://github.com/tufu9441/maupassant-hexo
