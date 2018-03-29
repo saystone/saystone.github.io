@@ -6,7 +6,7 @@
     "version": "3.6.0"
   },
   "scripts": {
-    "deploy": "hexo generate && hexo deploy",
+    "deploy": "hexo clean && hexo generate && cp -r attachments/* public && hexo deploy",
     "predeploy": "rm -rf .deploy_git && git checkout master && git pull && git clone -l . .deploy_git && git checkout hexo"
   },
   "dependencies": {

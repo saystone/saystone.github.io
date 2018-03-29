@@ -62,3 +62,4 @@ jspm_packages
 db.json
 .idea
 .deploy_git
+public
