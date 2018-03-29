@@ -5,6 +5,10 @@
   "hexo": {
     "version": "3.6.0"
   },
+  "scripts": {
+    "deploy": "hexo generate && hexo deploy",
+    "predeploy": "rm -rf .deploy_git && git checkout master && git pull && git clone -l . .deploy_git && git checkout hexo"
+  },
   "dependencies": {
     "hexo": "^3.6.0",
     "hexo-deployer-git": "^0.3.1",
