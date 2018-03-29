@@ -86,9 +86,9 @@
     </summary>
     
     
-      <category term="hexo" scheme="https://saystone.github.io/tags/hexo/"/>
-    
       <category term="static-blog" scheme="https://saystone.github.io/tags/static-blog/"/>
+    
+      <category term="hexo" scheme="https://saystone.github.io/tags/hexo/"/>
     
   </entry>
   
