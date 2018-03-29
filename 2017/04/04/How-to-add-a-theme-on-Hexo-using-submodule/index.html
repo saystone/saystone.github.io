@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+
+  <meta name="description" content="Git 의 submodule 을 사용하여 Hexo 에 테마 추가하기"/>
+
+
+
+
+  <meta name="keywords" content="hexo, theme, even, submodule, git, " />
+
+
+
+
+
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="null">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.6.0" />
+
+
+
+<link rel="canonical" href="https://saystone.github.io/2017/04/04/How-to-add-a-theme-on-Hexo-using-submodule/"/>
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.6.0" />
+
+
+
+
+
+
+  
+
+
+  <script id="google_analytics">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-8545359-2', 'auto');
+        ga('send', 'pageview');
+  </script>
+
+
+  <script id="baidu_push">
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+
+
+
+
+
+
+
+    <title> Git 의 submodule 을 사용하여 Hexo 에 테마 추가하기 -  </title>
+  </head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo"></a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    
+      <a href="/">
+        <li class="mobile-menu-item">
+          
+          
+            Home
+          
+        </li>
+      </a>
+    
+      <a href="/archives/">
+        <li class="mobile-menu-item">
+          
+          
+            Archives
+          
+        </li>
+      </a>
+    
+  </ul>
+</nav>
+
+    <div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo"></a>
+</div>
+
+<nav class="site-navbar">
+  
+    <ul id="menu" class="menu">
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/">
+            
+            
+              Home
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            
+            
+              Archives
+            
+          </a>
+        </li>
+      
+    </ul>
+  
+</nav>
+
+      </header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content">
+            
+  
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          Git 의 submodule 을 사용하여 Hexo 에 테마 추가하기
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2017-04-04
+        </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+  <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#submodule"><span class="toc-text">submodule?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Hexo-테마-설치"><span class="toc-text">Hexo 테마 설치</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#참고"><span class="toc-text">참고</span></a></li></ol>
+    </div>
+  </div>
+
+
+    <div class="post-content">
+      
+        <p>언젠가 Git을 사용하면서 그런 적이 있다. 내 저장소의 특정 위치에 다른 저장소를 연결하는 방법은 없을까? 간혹 그런 생각이 들 때마다 있겠거니 하고 그냥 넘어갔었는데 마침 이번에 Hexo 를 설치하고 테마를 설정하다 보니 딱 필요한 상황이 생겨서 정리해본다. <a id="more"></a></p>
+<hr>
+<h3 id="submodule"><a href="#submodule" class="headerlink" title="submodule?"></a>submodule?</h3><blockquote>
+<p>A submodule allows you to keep another Git repository in a subdirectory of your repository. The other repository has its own history, which does not interfere with the history of the current repository. This can be used to have external dependencies such as third party libraries for example.</p>
+</blockquote>
+<p>내 저장소의 특정 subdirectory에 다른 Git저장소를 유지해 주고 커밋 히스토리는 각각 따로 관리하게 된다고 이해하면 될 것 같다. (간단하게 리눅스 쉘의 symbolic link를 떠올리면 될 듯)</p>
+<hr>
+<h3 id="Hexo-테마-설치"><a href="#Hexo-테마-설치" class="headerlink" title="Hexo 테마 설치"></a>Hexo 테마 설치</h3><p>Hexo 내부적으로 <a href="https://hexo.io/docs/themes.html" target="_blank" rel="noopener">테마를 기본적으로 지원</a>하고 어떤 종류의 테마가 퍼블리싱 되어 있는지 <a href="https://hexo.io/themes/" target="_blank" rel="noopener">확인</a>도 할 수 있다. 개인적으로 모던하고 심플하고 감성적이면서 확장성 있고 다양한 디바이스를 지원하는(어디서 많이 본 문구 같다…?) 테마를 찾고 있었기 때문에 고르고 골라 <a href="https://github.com/ahonn/hexo-theme-even" target="_blank" rel="noopener">Even</a>이라는 테마를 선택하게 됐다. 테마를 선택했으니 본격적으로 설정해 보자.</p>
+<ol>
+<li><p>설치할 테마의 저장소 URL을 기억해 둔 다음 로컬의 저장소 루트로 이동해서 Git 명령어를 써서 submodule을 추가하자. 마지막 인자는 submodule을 설정할 경로.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> git submodule add https://github.com/ahonn/hexo-theme-even themes/even</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>별 문제가 없다면 해당 저장소를 클론 받는걸 볼 수 있고 루트에 <code>.gitmodules</code> 파일이 생성되며 <code>./themes/even</code> 디렉토리가 생성된걸 <code>git status</code>로 확인할 수 있다. </p>
+</li>
+<li><p>이제 Hexo 에 <code>나 이 테마 쓸거야~</code> 하고 알려줘야 한다. 루트의 <code>_config.yml</code>을 열어서 <code>theme</code> 속성의 값을 <code>even</code>으로 수정하고 로컬에서 서버를 올려보자.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> hexo s -o</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>곧 브라우저가 열리고 테마가 잘 반영된걸 확인했다면 커밋 &amp; 푸시로 마무리하자.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> git commit -m 'feat: add `even` theme' &amp;&amp; git push origin hexo</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Github으로 발행까지 하면 리모트에 테마가 반영된걸 확인해 볼수 있다!</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> hexo deploy</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>추가로 해당 테마에서 지원하는 여러 가지 부가적인 기능들이 있는데 테마 자체적으로 지원하는 기능 외에도 Hexo에서 지원하는 플러그인 기능까지 활용하고 있다. (SCSS renderer, 본문 검색 등) 자세한 내용은 위키에서 확인할 수 있는데 중국어의 압박이 있으니 인내심을 갖고 설정하자. (같은 메뉴를 몇 번째 클릭하는지…ㅠㅠ)</p>
+</li>
+<li>추후 다른 환경에 자신이 만든 저장소를 클론해야 할 일이 생길 텐데 단순히 클론만 받으면 하위 경로에 있는 submodule까지 클론하지 않는다. 아래 명령어를 사용하여 해결하자.<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> git submodule update --init --recursive</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<hr>
+<h3 id="참고"><a href="#참고" class="headerlink" title="참고"></a>참고</h3><ul>
+<li><a href="https://git-scm.com/docs/git-submodule#_description" target="_blank" rel="noopener">Git submodule</a></li>
+<li><a href="https://git-scm.com/book/ko/v2/Git-%EB%8F%84%EA%B5%AC-%EC%84%9C%EB%B8%8C%EB%AA%A8%EB%93%88" target="_blank" rel="noopener">Git submodule(한글)</a></li>
+<li><a href="http://stackoverflow.com/questions/1030169/easy-way-pull-latest-of-all-submodules" target="_blank" rel="noopener">쉽게 모든 submodule 을 pull 받는 방법</a></li>
+<li><a href="https://github.com/ahonn/hexo-theme-even/wiki" target="_blank" rel="noopener">Even 테마 위키</a></li>
+</ul>
+
+      
+    </div>
+
+    
+      
+      
+
+
+
+      
+      
+    
+
+    
+      <footer class="post-footer">
+        
+          <div class="post-tags">
+            
+              <a href="/tags/hexo/">hexo</a>
+            
+              <a href="/tags/theme/">theme</a>
+            
+              <a href="/tags/even/">even</a>
+            
+              <a href="/tags/submodule/">submodule</a>
+            
+              <a href="/tags/git/">git</a>
+            
+          </div>
+        
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2017/10/18/Save-your-CircleCI-build-time-with-custom-docker-image/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">커스텀 도커 이미지로 CircleCI 빌드 시간 단축하기</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    
+    
+      <a class="next" href="/2017/02/13/How-to-inatall-a-static-blog-with-Hexo/">
+        <span class="next-text nav-default">정적 블로그 Hexo 설치하기</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+      </footer>
+    
+
+  </article>
+
+
+          </div>
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+      </main>
+
+      <footer id="footer" class="footer">
+
+  <div class="social-links">
+    
+      
+        
+          <a href="mailto:saystone@email.com" class="iconfont icon-email" title="email"></a>
+        
+      
+    
+      
+        
+          <a href="https://www.twitter.com/saystone" class="iconfont icon-twitter" title="twitter"></a>
+        
+      
+    
+      
+        
+          <a href="https://www.facebook.com/saystone" class="iconfont icon-facebook" title="facebook"></a>
+        
+      
+    
+      
+        
+          <a href="https://www.github.com/saystone" class="iconfont icon-github" title="github"></a>
+        
+      
+    
+    
+    
+      <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    
+  </div>
+
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://hexo.io/">Hexo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">
+    
+    &copy; 
+     
+      2017 - 
+    
+    2018
+
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">saystone</span>
+  </span>
+</div>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+
+    
+  
+  <script type="text/javascript">
+    var disqus_config = function () {
+        this.page.url = 'https://saystone.github.io/2017/04/04/How-to-add-a-theme-on-Hexo-using-submodule/';
+        this.page.identifier = '2017/04/04/How-to-add-a-theme-on-Hexo-using-submodule/';
+        this.page.title = 'Git 의 submodule 을 사용하여 Hexo 에 테마 추가하기';
+    };
+    (function() {
+    var d = document, s = d.createElement('script');
+
+    s.src = '//saystone.disqus.com/embed.js';
+
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();  
+  </script>
+
+  
+
+  
+
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  
+
+  
+
+
+    <script type="text/javascript" src="/js/src/even.js?v=2.6.0"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=2.6.0"></script>
+
+  </body>
+</html>
