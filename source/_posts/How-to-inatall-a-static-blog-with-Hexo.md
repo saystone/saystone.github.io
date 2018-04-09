@@ -1,7 +1,7 @@
 ---
 title: 정적 블로그 Hexo 설치하기
 date: 2017-02-13 17:31:28
-tags: 
+tags:
   - static-blog
   - hexo
 ---
