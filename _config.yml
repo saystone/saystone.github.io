@@ -86,7 +86,10 @@ theme_config:
   fancybox: false
   toc: false
   rss: default
-
+  menu:
+    Home: /
+    Archives: /archives
+    # About: /about
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
