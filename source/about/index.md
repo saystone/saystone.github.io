@@ -3,31 +3,15 @@ title: About
 date: 2018-04-05 10:36:41
 ---
 
-- Experience
-  - Senior Software Engineer at Trillionaire 2017.04 ~ current
-    - 상담형 뷰티 커머스 후이서울 모바일 앱과 상담원 및 어드민 데스크탑 앱 개발 참여
-    - TypeScript, React Native, Electron
-    - Node.js + Express, GraphQL, SocketCluster
-    - AWS EB, EC2, ELB, DynamoDB, RDS(PostgreSQL), SQS, S3, Lambda
+- Work Experience
+  - Senior Software Engineer, Trillionaire Inc - 2017.04 - current
+    - Huiseoul(후이서울)[http://www.huiseoul.com]: 중국인 대상 대화형 뷰티 이커머스 서비스 - 방문판매의 온라인화
 
-  - Lead Software Engineer at Frientrip 2014.10 ~ 2017.02
-    - 소셜 엑티비티 O2O 플랫폼 프립 모바일 앱과 웹사이트 및 어드민 웹사이트 개발 참여
-    - JavaScript(ES5), AngularJS, Node.js + Express, Loopback
-    - AWS EC2, ELB, RDS(MySQL), S3, ACM, Route53
-    - 개발팀 매니징, 팀간 커뮤니케이션 어레인지
+  - Lead Software Engineer, Frientrip  Inc - 2014.10  - 2017.02
+    - Frip(프립)[https://www.frip.co.kr]: 소셜 액티비티 O2O 플랫폼 서비스 - 모임 주최자와 고객을 연결
 
-  - Senior Software Engineer at Frograms 2012.12 ~ 2014.07
-    - 개인화 영화 추천 서비스 왓챠 앱과 웹사이트 및 어드민 웹사이트 개발 참여
-    - Ruby(on Rails), JavaScript, jQuery, Redis
-    - AWS EC2, ELB, RDS(MySQL), S3
+  - Software Engineer, Frograms Inc - 2012.12 - 2014.07
+    - Watcha(왓챠)[https://www.watcha.net]: 개인화 영화 추천 큐레이션 서비스 - 고객의 평점을 분석하여 취향에 맞는 영화 추천
 
-  - Senior Manager at Wylie 2007.03 ~ 2012.11
-    - 고객 요구사항 기반 모바일 앱/웹사이트(PC/모바일)/어드민 구축 및 운영
-    - 프로젝트 리딩 경험, 팀간, 직군간 커뮤니케이션 어레인지
-    - ASP, JSP, PHP, Hosting, MSSQL, ORACLE, Objective-C, JavaScript, jQuery ...
-
-- Skillset
-  -
-
-- Misc
-  - lodash, prettier
+  - Senior Manager, Web/Mobile Developer, Wylie Inc - 2007.03 - 2012.11
+    - 디지털 마케팅 웹에이전시 - 고객사로부터 프로젝트를 수주하여 개발
