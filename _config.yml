@@ -89,7 +89,7 @@ theme_config:
   menu:
     Home: /
     Archives: /archives
-    About: /about
+    # About: /about
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
