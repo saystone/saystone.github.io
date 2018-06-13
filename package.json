@@ -24,7 +24,6 @@
     "hexo-renderer-marked": "^0.3.2",
     "hexo-renderer-pug": "0.0.5",
     "hexo-renderer-sass": "^0.3.2",
-    "hexo-renderer-scss": "^1.2.0",
     "hexo-renderer-stylus": "^0.3.3",
     "hexo-server": "^0.3.2"
   },
