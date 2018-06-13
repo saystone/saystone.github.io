@@ -88,7 +88,7 @@ $ php-cs-fixer fix ~/Projects/my_project/hello.php
 
 ---
 
-### pre-commit hook 설정
+### Git pre-commit hook 설정
   - https://gist.github.com/saystone/6ae86685f34d632c37a98fc4d36b74d2#file-pre-commit-php 내용을 그대로 복사합니다. (혹은 참조해서 취향대로 수정하세요.)
   - 가져온 내용을 `~/Projects/my_project/.git/hooks/pre-commit` 파일에 넣고 실행권한을 줍니다.
 
