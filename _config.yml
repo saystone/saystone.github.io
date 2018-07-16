@@ -65,26 +65,24 @@ pagination_dir: page
 ## Themes: https://hexo.io/themes/
 theme: even
 theme_config:
-  theme:
-    color: Default
-    toc: true
-    search: true
-    navbar: true
-    fancybox: false
+  color: Default
+  toc: true
+  fancybox: false
   copyright:
     enable: false
+  reward:
+    enable: false
+    qrCode:
+      wechat:
+      alipay:
   social:
     email: saystone@email.com
     twitter: https://www.twitter.com/saystone
     facebook: https://www.facebook.com/saystone
     github: https://www.github.com/saystone
-  reward:
-    enable: false
   google_analytics: UA-8545359-2
   disqus_shortname: saystone
   since: 2017
-  fancybox: false
-  toc: false
   rss: default
   menu:
     Home: /
