@@ -17,12 +17,12 @@
 
 
 
-  <meta name="description" content="Git 의 submodule 을 사용하여 Hexo 에 테마 추가하기"/>
+  <meta name="description" content="macOS 환경에 Black(Code formatter for Python) 설치하기"/>
 
 
 
 
-  <meta name="keywords" content="hexo, theme, even, submodule, git, " />
+  <meta name="keywords" content="macOS, black, Python, git hooks, pre-commit, code formatter, pycodestyle, PEP 8, " />
 
 
 
@@ -42,7 +42,7 @@
 
 
 
-<link rel="canonical" href="https://saystone.github.io/2017/04/04/How-to-add-a-theme-on-Hexo-using-submodule/"/>
+<link rel="canonical" href="https://saystone.github.io/2018/06/18/How-to-install-Python-code-formatter-Black-on-macOS/"/>
 
 
 
@@ -97,7 +97,7 @@
   window.config = {"title":null,"subtitle":null,"description":null,"author":"saystone","language":"en","timezone":"Asia/Seoul","url":"https://saystone.github.io","root":"/","permalink":":year/:month/:day/:title/","permalink_defaults":null,"source_dir":"source","public_dir":"public","tag_dir":"tags","archive_dir":"archives","category_dir":"categories","code_dir":"downloads/code","i18n_dir":":lang","skip_render":null,"new_post_name":":title.md","default_layout":"post","titlecase":false,"external_link":true,"filename_case":0,"render_drafts":false,"post_asset_folder":false,"relative_link":false,"future":true,"highlight":{"enable":true,"auto_detect":false,"line_number":true,"tab_replace":null,"first_line_number":"always1"},"default_category":"uncategorized","category_map":null,"tag_map":null,"date_format":"YYYY-MM-DD","time_format":"HH:mm:ss","per_page":10,"pagination_dir":"page","theme":"even","deploy":{"type":"git","repo":"git@github.com:saystone/saystone.github.io.git"},"ignore":[],"theme_config":{"color":"Default","toc":true,"fancybox":false,"copyright":{"enable":false},"reward":{"enable":false,"qrCode":{"wechat":null,"alipay":null}},"social":{"email":"saystone@email.com","twitter":"https://www.twitter.com/saystone","facebook":"https://www.facebook.com/saystone","github":"https://www.github.com/saystone"},"google_analytics":"UA-8545359-2","disqus_shortname":"saystone","since":2017,"rss":"default","menu":{"Home":"/","Archives":"/archives"}},"archive_generator":{"per_page":10,"yearly":true,"monthly":true,"daily":false},"category_generator":{"per_page":10},"feed":{"type":"atom","limit":20,"hub":"","content":true,"content_limit":140,"content_limit_delim":"","path":"atom.xml"},"tag_generator":{"per_page":10},"index_generator":{"per_page":10,"order_by":"-date"},"marked":{"gfm":true,"pedantic":false,"sanitize":false,"tables":true,"breaks":true,"smartLists":true,"smartypants":true,"modifyAnchors":"","autolink":true},"server":{"port":4000,"log":false,"compress":false,"header":true},"since":2017,"favicon":"/favicon.ico","rss":"default","menu":{"Home":"/","Archives":"/archives"},"color":"Default","mode":"default","toc":true,"fancybox":false,"pjax":true,"copyright":{"enable":false},"reward":{"enable":false,"qrCode":{"wechat":null,"alipay":null}},"social":{"email":"saystone@email.com","twitter":"https://www.twitter.com/saystone","facebook":"https://www.facebook.com/saystone","github":"https://www.github.com/saystone"},"leancloud":{"app_id":null,"app_key":null},"baidu_analytics":null,"baidu_verification":null,"google_analytics":"UA-8545359-2","google_verification":null,"disqus_shortname":"saystone","changyan":{"appid":null,"appkey":null},"livere_datauid":null,"version":"2.10.1"};
 </script>
 
-    <title> Git 의 submodule 을 사용하여 Hexo 에 테마 추가하기 -  </title>
+    <title> macOS 환경에 Black(Code formatter for Python) 설치하기 -  </title>
   </head>
 
   <body><div id="mobile-navbar" class="mobile-navbar">
@@ -177,13 +177,13 @@
     <header class="post-header">
       <h1 class="post-title">
         
-          Git 의 submodule 을 사용하여 Hexo 에 테마 추가하기
+          macOS 환경에 Black(Code formatter for Python) 설치하기
         
       </h1>
 
       <div class="post-meta">
         <span class="post-time">
-          2017-04-04
+          2018-06-18
         </span>
         
         
@@ -195,7 +195,7 @@
   <div class="post-toc" id="post-toc">
     <h2 class="post-toc-title">Contents</h2>
     <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#submodule"><span class="toc-text">submodule?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Hexo-테마-설치"><span class="toc-text">Hexo 테마 설치</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#참고"><span class="toc-text">참고</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Editor-plugins-for-Black"><span class="toc-text">Editor plugins for Black</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Outro"><span class="toc-text">Outro</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#참고"><span class="toc-text">참고</span></a></li></ol>
     </div>
   </div>
 
@@ -203,40 +203,33 @@
 
     <div class="post-content">
       
-        <p>언젠가 Git을 사용하면서 그런 적이 있다. 내 저장소의 특정 위치에 다른 저장소를 연결하는 방법은 없을까? 간혹 그런 생각이 들 때마다 있겠거니 하고 그냥 넘어갔었는데 마침 이번에 Hexo 를 설치하고 테마를 설정하다 보니 딱 필요한 상황이 생겨서 정리해본다. <a id="more"></a></p>
+        <p>일전에 PHP 프로젝트에 써봄직한 Code formatter를 소개했습니다. 이번에는 Python 프로젝트에 써볼만한 도구를 소개하려고 합니다. 운영중인 Python 프로젝트는 Python의 문법적 특성으로 인해 PHP 프로젝트보다 상대적으로 깔끔한 코드 베이스를 갖추고 있습니다. 다만, 빠른 기능구현에 집중하다 보니 코딩 컨벤션 측면에선 다소 아쉬운 부분이 있습니다. 조금이라도 일찍 도구를 도입해서 표준화를 시키는게 여러모로 이득이라고 생각하여 리서치를 진행하게 됐습니다.<a id="more"></a></p>
+<p>이 글을 정리하기 위해 구글링을 하던 중 코딩 컨벤션이 무엇인지, 왜 중요한지, 일관성이 있는 기준이 어떤 이점을 가질 수 있는지 아주 잘 설명한 글을 먼저 소개하고 본론으로 들어가도록 하겠습니다.</p>
+<ul>
+<li><a href="https://spoqa.github.io/" target="_blank" rel="noopener">스포카 기술 블로그</a>: <a href="https://spoqa.github.io/2012/08/03/about-python-coding-convention.html" target="_blank" rel="noopener">파이썬 코딩 컨벤션</a></li>
+</ul>
 <hr>
-<h3 id="submodule"><a href="#submodule" class="headerlink" title="submodule?"></a>submodule?</h3><blockquote>
-<p>A submodule allows you to keep another Git repository in a subdirectory of your repository. The other repository has its own history, which does not interfere with the history of the current repository. This can be used to have external dependencies such as third party libraries for example.</p>
-</blockquote>
-<p>내 저장소의 특정 subdirectory에 다른 Git저장소를 유지해 주고 커밋 히스토리는 각각 따로 관리하게 된다고 이해하면 될 것 같다. (간단하게 리눅스 쉘의 symbolic link를 떠올리면 될 듯)</p>
+<p><a href="https://github.com/ambv/black" target="_blank" rel="noopener">Black</a>을 소개합니다. Black은 Python 언어에서 사용할수 있는 Code formatter입니다. <code>The uncompromising code formatter.</code> 라고 소개하고 있는데 다소 엄격해 보이는 문구가 뭔가 마음에 듭니다. 이는 Black이 추구하는 코딩 컨벤션이 개발자가 작성한 코드 스타일과 타협을 하지 않는다고 해석할수 있을것 같아요. 그렇다면, 이 도구는 어떤 코딩 컨벤션을 기준으로 규칙을 정의하는지 궁금해서 소스를 까보았습니다.</p>
+<p>Black의 컨벤션 확인 로직은 <a href="https://github.com/PyCQA/pycodestyle" target="_blank" rel="noopener">pycodestyle</a>을 <a href="https://github.com/PyCQA/pycodestyle/blob/master/pycodestyle.py" target="_blank" rel="noopener">토대로 구현</a>되어 있습니다. <code>pycodestyle</code>은 Python 언어에서 사용하는 linter라고 볼 수 있는데, 컨벤션 규칙을 <a href="https://www.python.org/dev/peps/pep-0008/" target="_blank" rel="noopener">PEP 8</a>를 기준으로 하고 있습니다. 따라서, Black의 컨벤션 규칙은 <code>PEP 8</code>에 맞춰져 있다고 생각하면 될것 같습니다.</p>
 <hr>
-<h3 id="Hexo-테마-설치"><a href="#Hexo-테마-설치" class="headerlink" title="Hexo 테마 설치"></a>Hexo 테마 설치</h3><p>Hexo 내부적으로 <a href="https://hexo.io/docs/themes.html" target="_blank" rel="noopener">테마를 기본적으로 지원</a>하고 어떤 종류의 테마가 퍼블리싱 되어 있는지 <a href="https://hexo.io/themes/" target="_blank" rel="noopener">확인</a>도 할 수 있다. 개인적으로 모던하고 심플하고 감성적이면서 확장성 있고 다양한 디바이스를 지원하는(어디서 많이 본 문구 같다…?) 테마를 찾고 있었기 때문에 고르고 골라 <a href="https://github.com/ahonn/hexo-theme-even" target="_blank" rel="noopener">Even</a>이라는 테마를 선택하게 됐다. 테마를 선택했으니 본격적으로 설정해 보자.</p>
-<ol>
-<li><p>설치할 테마의 저장소 URL을 기억해 둔 다음 로컬의 저장소 루트로 이동해서 Git 명령어를 써서 submodule을 추가하자. 마지막 인자는 submodule을 설정할 경로.</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> git submodule add https://github.com/ahonn/hexo-theme-even themes/even</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>별 문제가 없다면 해당 저장소를 클론 받는걸 볼 수 있고 루트에 <code>.gitmodules</code> 파일이 생성되며 <code>./themes/even</code> 디렉토리가 생성된걸 <code>git status</code>로 확인할 수 있다. </p>
-</li>
-<li><p>이제 Hexo 에 <code>나 이 테마 쓸거야~</code> 하고 알려줘야 한다. 루트의 <code>_config.yml</code>을 열어서 <code>theme</code> 속성의 값을 <code>even</code>으로 수정하고 로컬에서 서버를 올려보자.</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> hexo s -o</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>곧 브라우저가 열리고 테마가 잘 반영된걸 확인했다면 커밋 &amp; 푸시로 마무리하자.</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> git commit -m 'feat: add `even` theme' &amp;&amp; git push origin hexo</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Github으로 발행까지 하면 리모트에 테마가 반영된걸 확인해 볼수 있다!</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> hexo deploy</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>추가로 해당 테마에서 지원하는 여러 가지 부가적인 기능들이 있는데 테마 자체적으로 지원하는 기능 외에도 Hexo에서 지원하는 플러그인 기능까지 활용하고 있다. (SCSS renderer, 본문 검색 등) 자세한 내용은 위키에서 확인할 수 있는데 중국어의 압박이 있으니 인내심을 갖고 설정하자. (같은 메뉴를 몇 번째 클릭하는지…ㅠㅠ)</p>
-</li>
-<li>추후 다른 환경에 자신이 만든 저장소를 클론해야 할 일이 생길 텐데 단순히 클론만 받으면 하위 경로에 있는 submodule까지 클론하지 않는다. 아래 명령어를 사용하여 해결하자.<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> git submodule update --init --recursive</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<hr>
+<p>설치 방법은 매우 간단합니다.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> pip install black</span><br></pre></td></tr></table></figure>
+<p>실행 방법 또한 간단합니다.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> black blah.py</span><br></pre></td></tr></table></figure>
+<p>각종 실행 옵션은 <a href="https://github.com/ambv/black#command-line-options" target="_blank" rel="noopener">공식 문서</a>를 참고하시면 되고 각종 에디터별 플러그인 등은 아래 목록 참고해 주세요!</p>
+<h3 id="Editor-plugins-for-Black"><a href="#Editor-plugins-for-Black" class="headerlink" title="Editor plugins for Black"></a>Editor plugins for Black</h3><ul>
+<li>PyCharm: <a href="https://github.com/ambv/black#pycharm" target="_blank" rel="noopener">https://github.com/ambv/black#pycharm</a></li>
+<li>Vim: <a href="https://github.com/ambv/black#vim" target="_blank" rel="noopener">https://github.com/ambv/black#vim</a></li>
+<li>VSCode: <a href="https://github.com/ambv/black#visual-studio-code" target="_blank" rel="noopener">https://github.com/ambv/black#visual-studio-code</a></li>
+<li>Atom: <a href="https://atom.io/packages/python-black" target="_blank" rel="noopener">https://atom.io/packages/python-black</a></li>
+</ul>
+<h3 id="Outro"><a href="#Outro" class="headerlink" title="Outro"></a>Outro</h3><p>팀 내 도입 이후 코드가 꽤나 깔끔해졌습니다. 로직을 구현하는 스타일은 다를지언정 코드 스타일링은 어느정도 표준화 되어서 누가 작성해도 일관성 있는 가독성을 보장하게 됐습니다. 가독성이 나아졌기 때문에 코드 읽기가 더 수월해졌고요. 이는 생산성으로 이어지길 기대합니다. 에디터에서 저장하는 시점에 한번 돌리고 커밋 전에 한번 돌리는 식으로 사용하고 있습니다. 클린 코드 하세요! :)</p>
 <h3 id="참고"><a href="#참고" class="headerlink" title="참고"></a>참고</h3><ul>
-<li><a href="https://git-scm.com/docs/git-submodule#_description" target="_blank" rel="noopener">Git submodule</a></li>
-<li><a href="https://git-scm.com/book/ko/v2/Git-%EB%8F%84%EA%B5%AC-%EC%84%9C%EB%B8%8C%EB%AA%A8%EB%93%88" target="_blank" rel="noopener">Git submodule(한글)</a></li>
-<li><a href="http://stackoverflow.com/questions/1030169/easy-way-pull-latest-of-all-submodules" target="_blank" rel="noopener">쉽게 모든 submodule 을 pull 받는 방법</a></li>
-<li><a href="https://github.com/ahonn/hexo-theme-even/wiki" target="_blank" rel="noopener">Even 테마 위키</a></li>
+<li><a href="https://github.com/ambv/black" target="_blank" rel="noopener">Black</a></li>
+<li><a href="https://github.com/PyCQA/pycodestyle" target="_blank" rel="noopener">pycodestyle</a></li>
+<li><a href="https://www.python.org/dev/peps/pep-0008/" target="_blank" rel="noopener">PEP 8</a></li>
+<li><a href="https://github.com/mre/awesome-static-analysis/" target="_blank" rel="noopener">awesome-static-analysis</a></li>
+<li><a href="https://spoqa.github.io/2012/08/03/about-python-coding-convention.html" target="_blank" rel="noopener">파이썬 코딩 컨벤션</a></li>
 </ul>
 
       
@@ -257,15 +250,21 @@
         
           <div class="post-tags">
             
-              <a href="/tags/hexo/">hexo</a>
+              <a href="/tags/macOS/">macOS</a>
             
-              <a href="/tags/theme/">theme</a>
+              <a href="/tags/black/">black</a>
             
-              <a href="/tags/even/">even</a>
+              <a href="/tags/Python/">Python</a>
             
-              <a href="/tags/submodule/">submodule</a>
+              <a href="/tags/git-hooks/">git hooks</a>
             
-              <a href="/tags/git/">git</a>
+              <a href="/tags/pre-commit/">pre-commit</a>
+            
+              <a href="/tags/code-formatter/">code formatter</a>
+            
+              <a href="/tags/pycodestyle/">pycodestyle</a>
+            
+              <a href="/tags/PEP-8/">PEP 8</a>
             
           </div>
         
@@ -273,15 +272,9 @@
         
   <nav class="post-nav">
     
-      <a class="prev" href="/2017/10/18/Save-your-CircleCI-build-time-with-custom-docker-image/">
-        <i class="iconfont icon-left"></i>
-        <span class="prev-text nav-default">커스텀 도커 이미지로 CircleCI 빌드 시간 단축하기</span>
-        <span class="prev-text nav-mobile">Prev</span>
-      </a>
     
-    
-      <a class="next" href="/2017/02/13/How-to-inatall-a-static-blog-with-Hexo/">
-        <span class="next-text nav-default">정적 블로그 Hexo 설치하기</span>
+      <a class="next" href="/2018/06/11/How-to-setting-up-PHP-CS-Fixer-on-macOS/">
+        <span class="next-text nav-default">macOS 환경에 PHP-CS-Fixer 설치하기</span>
         <span class="prev-text nav-mobile">Next</span>
         <i class="iconfont icon-right"></i>
       </a>
@@ -384,9 +377,9 @@
   
   <script type="text/javascript">
     var disqus_config = function () {
-        this.page.url = 'https://saystone.github.io/2017/04/04/How-to-add-a-theme-on-Hexo-using-submodule/';
-        this.page.identifier = '2017/04/04/How-to-add-a-theme-on-Hexo-using-submodule/';
-        this.page.title = 'Git 의 submodule 을 사용하여 Hexo 에 테마 추가하기';
+        this.page.url = 'https://saystone.github.io/2018/06/18/How-to-install-Python-code-formatter-Black-on-macOS/';
+        this.page.identifier = '2018/06/18/How-to-install-Python-code-formatter-Black-on-macOS/';
+        this.page.title = 'macOS 환경에 Black(Code formatter for Python) 설치하기';
     };
     (function() {
     var d = document, s = d.createElement('script');
