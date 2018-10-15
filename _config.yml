@@ -81,6 +81,7 @@ theme_config:
     facebook: https://www.facebook.com/saystone
     github: https://www.github.com/saystone
   google_analytics: UA-8545359-2
+  google_verification: 0_-hnFLKSghYPH3O8Xk2EsV-OWIRIceuXti7el5c9GQ
   disqus_shortname: saystone
   since: 2017
   rss: default
