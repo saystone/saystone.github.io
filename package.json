@@ -12,7 +12,7 @@
     "predeploy": "rm -rf .deploy_git && git checkout master && git pull && git clone -l . .deploy_git && git checkout hexo"
   },
   "dependencies": {
-    "hexo": "^3.7.1",
+    "hexo": "^3.8.0",
     "hexo-deployer-git": "^0.3.1",
     "hexo-generator-archive": "^0.1.5",
     "hexo-generator-category": "^0.1.3",
